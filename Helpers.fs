@@ -33,7 +33,7 @@ module Xml =
 
     
     let ToString (linefeed:string) (xml:XDocument)  =
-        Regex.Replace(xml.ToString(), "[\r\n]+", linefeed)
+        Regex.Replace(xml.ToString(), "(\r\n)|[\r\n]", linefeed)
 
 
 module NuGetVersion = 
