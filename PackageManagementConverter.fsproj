@@ -1,0 +1,22 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net7.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Include="Helpers.fs" />
+    <Compile Include="Config.fs" />
+    <Compile Include="CentralPackageManagement.fs" />
+    <Compile Include="Project.fs" />
+    <Compile Include="Solution.fs" />
+    <Compile Include="Directory.fs" />
+    <Compile Include="Program.fs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="NuGet.Versioning" Version="6.6.1"/>
+  </ItemGroup>
+
+</Project>
