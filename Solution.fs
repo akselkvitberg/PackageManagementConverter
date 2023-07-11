@@ -3,6 +3,8 @@
 open System.IO
 open System.Text.RegularExpressions
 open System
+open Spectre.Console
+open SpectreCoff.Output
 
 let GetProjects lines =
     let GuidPattern(text:string)= $@"\{{(?<{Regex.Escape(text)}>[0-9a-fA-F]{{8}}-[0-9a-fA-F]{{4}}-[0-9a-fA-F]{{4}}-[0-9a-fA-F]{{4}}-[0-9a-fA-F]{{12}})\}}"
@@ -31,5 +33,7 @@ let GetProjectsFromSolutionFile solutionFile =
     |> Array.map (fun path -> Path.Combine (solutionFolder, path))
     
 let ConvertSolution options solutionFile =
+    Log.Solution solutionFile
+    
     GetProjectsFromSolutionFile solutionFile
     |> Project.ConvertProjects options

@@ -6,6 +6,8 @@ open PackageManagementConverter
 open PackageManagementConverter.Solution
 open PackageManagementConverter.Directory
 open PackageManagementConverter.Config
+open Spectre.Console
+open SpectreCoff
 
 let args = Environment.GetCommandLineArgs()[1..] |> Array.toList
 
@@ -42,12 +44,12 @@ let options = ParseCommandLine args baseOptions
 
 let AssumeWorkingPath options =
     let executingFolder = Directory.GetCurrentDirectory()
-    let sln = Directory.GetFiles "*.sln" |> Array.tryHead
+    let sln = System.IO.Directory.GetFiles (executingFolder, "*.sln") |> Array.tryHead
     match sln with
     | Some path -> ConvertSolution {options with WorkingPath = SolutionFile path; BaseFolder = executingFolder } path
     | None ->
-        Console.WriteLine "Do you want to convert all projects in all subfolders? (y/n)"
-        match Console.ReadLine() with
+        let answer = ask $"Do you want to convert all projects in all subfolders of {executingFolder}? (y/n)" 
+        match answer with
         | "y" -> ConvertDirectory { options with WorkingPath = Directory executingFolder; BaseFolder = executingFolder} executingFolder
         | _ -> failwith "Must specify directory or solution file"
 

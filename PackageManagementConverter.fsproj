@@ -9,6 +9,7 @@
 
   <ItemGroup>
     <Compile Include="Helpers.fs" />
+    <Compile Include="Logging.fs" />
     <Compile Include="Config.fs" />
     <Compile Include="CentralPackageManagement.fs" />
     <Compile Include="Project.fs" />
@@ -19,6 +20,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="EluciusFTW.SpectreCoff" Version="0.47.1" />
     <PackageReference Include="NuGet.Versioning" Version="6.6.1"/>
   </ItemGroup>
 
