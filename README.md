@@ -28,8 +28,8 @@ If more than one version is used in the project, the highest version is selected
 The tool will remove all version information from the project files, and create a Directory.Packages.props file in the same directory as the solution file specified or in the directory specified.
 
 ## Command line options
-`<Solution file>` or `directory`: Select which solution or directory to work on. If not specified, the tool looks for a solution in the current directory. If not, it will use the current directory as the root and convert all projects in the subdirectories.
-`--dry-run`: Do not modify files on disk
-`--t`: Force versions on transitive dependencies (CentralPackageTransitivePinningEnabled=true)
-`--lowest-version`: When selecting which version to use, select the lowest version found. Defaults to highest version.
-`-crlf` `-lf` `-cr`: Select line ending to use. Defaults to system standard.
+`<Solution file>` or `directory`: Select which solution or directory to work on. If not specified, the tool looks for a solution in the current directory. If not, it will use the current directory as the root and convert all projects in the subdirectories.   
+`--dry-run`: Do not modify files on disk   
+`--t`: Force versions on transitive dependencies (CentralPackageTransitivePinningEnabled=true)   
+`--lowest-version`: When selecting which version to use, select the lowest version found. Defaults to highest version.   
+`-crlf` `-lf` `-cr`: Select line ending to use. Defaults to system standard.   
