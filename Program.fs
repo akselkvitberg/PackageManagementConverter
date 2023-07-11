@@ -17,15 +17,15 @@ let baseOptions =
         WorkingPath = NotSpecified
         Linefeed = Environment.NewLine
     }
-    
+
 let rec ParseCommandLine args (options:Config) =
     match args with
     | [] -> options
     | "-t"::xs -> ParseCommandLine xs { options with TransitivePinningEnabled = true}
-    | "-d"::xs -> ParseCommandLine xs { options with DryRun = true }
     | "--dry-run"::xs -> ParseCommandLine xs { options with DryRun = true }
-    | "--min"::xs -> ParseCommandLine xs {options with UseMinVersion = true}
-    | "--min-version"::xs -> ParseCommandLine xs {options with UseMinVersion = true}
+    | "--low"::xs -> ParseCommandLine xs {options with UseMinVersion = true}
+    | "--lowest"::xs -> ParseCommandLine xs {options with UseMinVersion = true}
+    | "--lowest-version"::xs -> ParseCommandLine xs {options with UseMinVersion = true}
     | "-crlf"::xs -> ParseCommandLine xs {options with Linefeed = "\r\n" }
     | "-lf"::xs -> ParseCommandLine xs {options with Linefeed = "\n" }
     | "-cr"::xs -> ParseCommandLine xs {options with Linefeed = "\r" }
