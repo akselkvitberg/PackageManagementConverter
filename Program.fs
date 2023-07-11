@@ -10,7 +10,7 @@ let args = Environment.GetCommandLineArgs()[1..] |> Array.toList
 
 let baseOptions =
     {
-        TransitivePinningEnabled = true
+        TransitivePinningEnabled = false
         BaseFolder = Path.GetFullPath "."
         DryRun = false
         UseMinVersion = false
