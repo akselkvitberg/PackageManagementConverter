@@ -1,5 +1,7 @@
 ﻿module PackageManagementConverter.Config
 
+open System.Text
+
 type WorkingPath =
     | NotSpecified
     | SolutionFile of string
@@ -13,4 +15,5 @@ type Config =
         UseMinVersion: bool
         WorkingPath: WorkingPath
         Linefeed: string
+        Encoding: Encoding
     }

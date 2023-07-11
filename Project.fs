@@ -46,7 +46,7 @@ let RemoveVersionFromProject options (projectPath: string) =
     packageReferences
     |> Seq.iter RemoveVersionFromElement
     
-    File.WriteAllText (projectPath, xml |> Xml.ToString options.Linefeed)
+    File.WriteAllText (projectPath, xml |> Xml.ToString options.Linefeed, options.Encoding)
 
 let ConvertProjects options projects =
     let versionSelector = if options.UseMinVersion then Array.min else Array.max

@@ -1,5 +1,6 @@
 ﻿open System
 open System.IO
+open System.Text
 open Microsoft.FSharp.Core
 open PackageManagementConverter
 open PackageManagementConverter.Solution
@@ -16,6 +17,7 @@ let baseOptions =
         UseMinVersion = false
         WorkingPath = NotSpecified
         Linefeed = Environment.NewLine
+        Encoding = UTF8Encoding(false)
     }
 
 let rec ParseCommandLine args (options:Config) =
@@ -29,6 +31,9 @@ let rec ParseCommandLine args (options:Config) =
     | "-crlf"::xs -> ParseCommandLine xs {options with Linefeed = "\r\n" }
     | "-lf"::xs -> ParseCommandLine xs {options with Linefeed = "\n" }
     | "-cr"::xs -> ParseCommandLine xs {options with Linefeed = "\r" }
+    | "--utf-8"::xs -> ParseCommandLine xs {options with Encoding = UTF8Encoding(false) }
+    | "--utf-8bom"::xs -> ParseCommandLine xs {options with Encoding = UTF8Encoding(true) }
+    | "--utf-16"::xs -> ParseCommandLine xs {options with Encoding = Encoding.Unicode }
     | path::xs when File.Exists path && Path.GetExtension path = ".sln" -> ParseCommandLine xs {options with WorkingPath = SolutionFile path; BaseFolder = Path.GetDirectoryName path }
     | path::xs when Directory.Exists path -> ParseCommandLine xs {options with WorkingPath = Directory path; BaseFolder = path } 
     | l -> failwith $"Unsupported argument {l}"

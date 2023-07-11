@@ -15,6 +15,7 @@
     <Compile Include="Solution.fs" />
     <Compile Include="Directory.fs" />
     <Compile Include="Program.fs" />
+    <Content Include="README.md" />
   </ItemGroup>
 
   <ItemGroup>

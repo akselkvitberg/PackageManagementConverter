@@ -1,6 +1,7 @@
 ﻿module PackageManagementConverter.CentralPackageManagement
 
 open System.IO
+open System.Text
 open PackageManagementConverter.Config
 
 let CreateCentralPackageManagementFile (options:Config) packages =
@@ -22,5 +23,8 @@ let CreateCentralPackageManagementFile (options:Config) packages =
     
 let WriteCentralPackageManagementFile options packages =
     let lines = CreateCentralPackageManagementFile options packages
-    let packageConfigPath = Path.Combine (options.BaseFolder, "Directory.Packages.props")
-    if not options.DryRun then File.WriteAllLines (packageConfigPath, lines)
+    let text = String.concat options.Linefeed lines
+    
+    if not options.DryRun then
+        let packageConfigPath = Path.Combine (options.BaseFolder, "Directory.Packages.props")
+        File.WriteAllText (packageConfigPath, text, options.Encoding)
