@@ -5,6 +5,10 @@
     <TargetFramework>net6.0</TargetFramework>
     <PackAsTool>true</PackAsTool>
     <ToolCommandName>convert-to-cpm</ToolCommandName>
+    <Title>Package Management Converter</Title>
+    <Authors>Aksel Kvitberg</Authors>
+    <Description>Converts a solution to use Central Package Management </Description>
+    <RepositoryUrl>https://github.com/akselkvitberg/PackageManagementConverter</RepositoryUrl>
   </PropertyGroup>
 
   <ItemGroup>
