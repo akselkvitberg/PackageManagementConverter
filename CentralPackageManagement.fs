@@ -6,6 +6,7 @@ open PackageManagementConverter.Config
 let CreateCentralPackageManagementFile (options:Config) packages =
     let packageRefs =
         packages
+        |> Array.sortBy fst
         |> Array.map (fun (package, version) -> $"""    <PackageVersion Include="{package}" Version="{version}"/>""")
     [|
         "<Project>"
