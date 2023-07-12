@@ -32,5 +32,5 @@ The tool will remove all version information from the project files, and create 
 `--dry-run`: Do not modify files on disk   
 `--t`: Force versions on transitive dependencies (CentralPackageTransitivePinningEnabled=true)   
 `--lowest-version`: When selecting which version to use, select the lowest version found. Defaults to highest version.   
-`-crlf` `-lf` `-cr`: Select line ending to use. Defaults to system standard.
+`-crlf` `-lf` `-cr`: Select line ending to use. Defaults to system standard.    
 `--utf-8` `--utf-8bom` `--utf-16`: Select encoding. Utf8 without bom is default.
