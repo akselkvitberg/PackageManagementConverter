@@ -59,8 +59,8 @@ let ConvertProjects options projects =
     projects
     |> Array.map GetProjectPackages
     |> Array.collect id
-    |> Array.groupByMap fst (Array.map snd >> versionSelector)
     |> Log.PackageVersions
+    |> Array.groupByMap fst (Array.map snd >> versionSelector)
     |> CentralPackageManagement.WriteCentralPackageManagementFile options
     
     projects

@@ -4,9 +4,19 @@ open System.Xml.Linq
 open SpectreCoff.Output
 
 let PackageVersions packages =
-    let list = packages |> Array.map (fun (package, version) -> P $"{package}: {version}") |> Array.toList// |> String.concat "\n"
     C $"Found the following packages:" |> toConsole
-    BI list |> toConsole
+    let groups =
+        packages
+        |> Array.sortBy fst
+        |> Array.groupBy fst
+        |> Array.map (fun (key, i) -> key, i |> Array.map snd)
+        |> Array.iter (fun (key, versions) ->
+            V key |> toConsole
+            versions
+            |> Array.distinct
+            |> Array.sort
+            |> Array.map (fun v -> P (v.ToString())) |> Array.toList |> BI |> toConsole
+            )
     packages
 
 let Projects projects =
